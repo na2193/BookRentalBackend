@@ -41,6 +41,9 @@ public class BookController {
 	@PostMapping("/add")
 	public ResponseEntity<Book> addBook(@RequestBody Book book) {
 		Book newBook = bookService.addBook(book);
+		
+		// add a check to make sure before adding the book, it already doesn't exist by id or maybe even isbn
+		// also will need to modify the sql table to make sure all fields are not null and isbn is unique
 		return new ResponseEntity<>(newBook, HttpStatus.CREATED);
 	}
 	

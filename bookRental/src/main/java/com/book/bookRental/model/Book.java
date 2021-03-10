@@ -15,12 +15,19 @@ public class Book implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false, updatable = false)
 	private Long id;
+	@Column(nullable = false)
 	private String bookName;
+	@Column(nullable = false)
 	private String authorLastName;
+	@Column(nullable = false)
 	private String authorFirstName;
+	@Column(nullable = false)
 	private String isbn;
+	@Column(nullable = false)
 	private String genre;
+	@Column(nullable = false)
 	private String description;
+	@Column(nullable = false)
     private int numInStock;
     private String imagePath;
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.book.bookRental.exception.BookNotFoundException;
 import com.book.bookRental.model.Book;
@@ -35,6 +36,7 @@ public class BookService {
 				.orElseThrow(() -> new BookNotFoundException("Book by id " + id + " was not found"));
 	}
 	
+	@Transactional
 	public void deleteBook(Long id) {
 		bookRepo.deleteBookById(id); 
 	}
