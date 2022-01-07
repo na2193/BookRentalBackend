@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.validation.constraints.*;
 
+import com.bookrental.models.ERole;
+
 public class SignupRequest {
 	@NotBlank
 	@Size(min = 3, max = 20)
