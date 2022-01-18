@@ -42,4 +42,21 @@ public class BookService {
 	public void deleteBook(Long id) {
 		bookRepo.deleteBookById(id); 
 	}
+	
+	public boolean findDuplicateBook(Book book) {
+		Book isbnFound = bookRepo.findByisbn(book.getIsbn());
+		//Book nameAndAuthorFound = bookRepo.findBybookNameAndauthorLastNameAndauthorFirstName(book.getBookName(), book.getAuthorLastName(), book.getAuthorFirstName());
+		
+		//nameAndAuthorFound == null
+		if(isbnFound == null) {
+			System.out.println("No Duplicate for book -> " + book.getBookName());
+			return true;
+		}
+		else {
+			System.out.println("Found duplicate book for -> " + book.getBookName());
+			return false;
+		}
+	}
+	
+	
 }

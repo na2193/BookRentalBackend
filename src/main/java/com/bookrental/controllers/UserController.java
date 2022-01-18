@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bookrental.models.User;
 import com.bookrental.security.services.UserDetailsServiceImpl;
 
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")

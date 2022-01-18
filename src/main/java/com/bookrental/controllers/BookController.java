@@ -46,11 +46,17 @@ public class BookController {
 	@PostMapping("/add")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Book> addBook(@RequestBody Book book) {
-		Book newBook = bookService.addBook(book);
 		
-		// add a check to make sure before adding the book, it already doesn't exist by id or maybe even isbn
-		// also will need to modify the sql table to make sure all fields are not null and isbn is unique
-		return new ResponseEntity<>(newBook, HttpStatus.CREATED);
+		boolean checkDuplicate = bookService.findDuplicateBook(book);
+		
+		if(checkDuplicate) {
+			Book newBook = bookService.addBook(book);
+			return new ResponseEntity<>(newBook, HttpStatus.CREATED);
+		}
+		else {
+			// check for better way to send response
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@PutMapping("/update")
